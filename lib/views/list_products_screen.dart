@@ -1,8 +1,10 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../cubit/cart_cubit.dart';
 import '../models/products.dart';
 import 'details_screen.dart';
+import 'cart_screen.dart';
 
 class ListProductsScreen extends StatefulWidget {
   @override
@@ -98,7 +100,30 @@ class _ListProductsScreenState extends State<ListProductsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Listado de Productos de Limpieza'),
+        title: Text('Listado de Productos'),
+        actions: [
+          BlocBuilder<CartCubit, CartState>(
+            builder: (context, state) {
+              if (state.cartItems.isNotEmpty) {
+                return IconButton(
+                  icon: Icon(Icons.shopping_cart),
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return Dialog(
+                          child: CartScreen(),
+                        );
+                      },
+                    );
+                  },
+                );
+              } else {
+                return Container();
+              }
+            },
+          ),
+        ],
       ),
       body: ListView.builder(
         itemCount: availableProducts.length,

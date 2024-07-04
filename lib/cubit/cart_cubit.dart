@@ -8,13 +8,14 @@ class CartCubit extends Cubit<CartState> {
   CartCubit() : super(CartState([]));
 
   void addItem(Product product) {
-    final updatedCart = List<Product>.from(state.cartItems)..add(product);
-    emit(CartState(updatedCart));
+    final currentState = List<Product>.from(state.cartItems);
+    currentState.add(product);
+    emit(CartState(currentState));
   }
 
   void removeItem(Product product) {
-    final updatedCart = List<Product>.from(state.cartItems)..remove(product);
-    emit(CartState(updatedCart));
+    final currentState = List<Product>.from(state.cartItems);
+    currentState.remove(product);
+    emit(CartState(currentState));
   }
 }
-
