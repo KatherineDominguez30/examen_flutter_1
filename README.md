@@ -14,22 +14,22 @@ Productos y Detalles del Producto.
 ## Capturas de Pantalla
 
 ### Primera Vista
-![Primera Vista](assets/images/primera_vista.png)
+!(images/primera_vista.png)
 
 ### Segunda Vista
-![Segunda Vista](assets/images/segunda_vista.png)
+![Segunda Vista](images/segunda_vista.png)
 
 ### Tercera Vista
-![Tercera Vista](assets/images/tercera_vista.png)
+![Tercera Vista](images/tercera_vista.png)
 
 ### Cuarta Vista
 ![Cuarta Vista](assets/images/cuarta.png)
 
 ### Quinta Vista
-![Quinta Vista](assets/images/quinta.png)
+![Quinta Vista](images/quinta.png)
 
 ### Sexta Vista
-![Sexta Vista](assets/images/sexta.png)
+![Sexta Vista](images/sexta.png)
 
 ### Séptima Vista
-![Séptima Vista](assets/images/septima.png)
+![Séptima Vista](images/septima.png)
