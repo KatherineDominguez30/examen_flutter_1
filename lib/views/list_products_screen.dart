@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/models/products.dart';
-// Asegúrate de tener esta importación
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../cubit/cart_cubit.dart';
+import '../models/products.dart';
+import 'details_screen.dart';
 
 class ListProductsScreen extends StatefulWidget {
   @override
@@ -9,85 +11,78 @@ class ListProductsScreen extends StatefulWidget {
 
 class _ListProductsScreenState extends State<ListProductsScreen> {
   List<Product> cleaningProducts = [
- Product(
+    Product(
       name: 'Detergente',
-      stock: 5,
       marca: 'Marca A',
       descripcion: 'Detergente para ropa.',
       uso: 'Ideal para lavar la ropa sucia.',
-      imageUrl: 'https://supermercadosnacional.com/media/catalog/product/cache/fde49a4ea9a339628caa0bc56aea00ff/2/2/2200271-1.jpg', // URL de ejemplo
+      price: 100.0,
+      stock: 10,
     ),
     Product(
       name: 'Desinfectante',
-      stock: 7,
       marca: 'Marca B',
       descripcion: 'Desinfectante multiusos.',
       uso: 'Para desinfectar superficies y objetos.',
-         imageUrl:
-          'https://supermercadosnacional.com/media/catalog/product/cache/fde49a4ea9a339628caa0bc56aea00ff/2/2/2200271-1.jpg', // URL de ejemplo
+      price: 150.0,
+      stock: 5,
     ),
     Product(
       name: 'Jabón para manos',
-      stock: 3,
       marca: 'Marca C',
       descripcion: 'Jabón líquido antibacterial.',
       uso: 'Limpieza y protección de las manos.',
-         imageUrl:
-          'https://supermercadosnacional.com/media/catalog/product/cache/fde49a4ea9a339628caa0bc56aea00ff/2/2/2200271-1.jpg', // URL de ejemplo
+      price: 50.0,
+      stock: 20,
     ),
     Product(
       name: 'Limpiavidrios',
-      stock: 8,
       marca: 'Marca D',
       descripcion: 'Limpiador para ventanas y espejos.',
       uso: 'Para obtener superficies limpias y brillantes.',
-         imageUrl:
-          'https://supermercadosnacional.com/media/catalog/product/cache/fde49a4ea9a339628caa0bc56aea00ff/2/2/2200271-1.jpg', // URL de ejemplo
+      price: 120.0,
+      stock: 8,
     ),
     Product(
       name: 'Toallas desinfectantes',
-      stock: 0,
       marca: 'Marca E',
       descripcion: 'Toallas húmedas desechables.',
       uso: 'Limpieza rápida de superficies.',
-         imageUrl:
-          'https://supermercadosnacional.com/media/catalog/product/cache/fde49a4ea9a339628caa0bc56aea00ff/2/2/2200271-1.jpg', // URL de ejemplo
+      price: 60.0,
+      stock: 15,
     ),
     Product(
       name: 'Esponja abrasiva',
-      stock: 6,
       marca: 'Marca F',
       descripcion: 'Esponja para limpieza de utensilios.',
       uso: 'Eliminar suciedad adherida en utensilios de cocina.',
-         imageUrl:
-          'https://supermercadosnacional.com/media/catalog/product/cache/fde49a4ea9a339628caa0bc56aea00ff/2/2/2200271-1.jpg', // URL de ejemplo
+      price: 30.0,
+      stock: 25,
     ),
     Product(
       name: 'Escoba',
-      stock: 2,
       marca: 'Marca G',
       descripcion: 'Escoba de cerdas resistentes.',
       uso: 'Limpieza de pisos y áreas amplias.',
-         imageUrl:
-          'https://supermercadosnacional.com/media/catalog/product/cache/fde49a4ea9a339628caa0bc56aea00ff/2/2/2200271-1.jpg', // URL de ejemplo
+      price: 90.0,
+      stock: 7,
     ),
     Product(
       name: 'Trapo de microfibra',
-      stock: 4,
       marca: 'Marca H',
       descripcion: 'Trapo absorbente de microfibra.',
       uso: 'Para limpieza de superficies delicadas.',
-         imageUrl:
-          'https://supermercadosnacional.com/media/catalog/product/cache/fde49a4ea9a339628caa0bc56aea00ff/2/2/2200271-1.jpg', // URL de ejemplo
+      price: 40.0,
+      stock: 18,
     ),
     Product(
       name: 'Limpiador multiusos',
-      stock: 10,
       marca: 'Marca I',
       descripcion: 'Limpiador concentrado.',
-        uso: 'Para limpieza de superficies delicadas.',
-           imageUrl: 'https://supermercadosnacional.com/media/catalog/product/cache/fde49a4ea9a339628caa0bc56aea00ff/2/2/2200271-1.jpg', // URL de ejemplo
-           )
+      uso: 'Para limpieza de superficies delicadas.',
+      price: 80.0,
+      stock: 12,
+    ),
   ];
 
   List<Product> availableProducts = [];
@@ -111,12 +106,25 @@ class _ListProductsScreenState extends State<ListProductsScreen> {
           return ListTile(
             title: Text(availableProducts[index].name),
             subtitle: Text('Stock: ${availableProducts[index].stock}'),
+            trailing: IconButton(
+              icon: Icon(Icons.add_shopping_cart),
+              onPressed: () {
+                context.read<CartCubit>().addItem(availableProducts[index]);
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(
+                        '${availableProducts[index].name} añadido al carrito'),
+                  ),
+                );
+              },
+            ),
             onTap: () {
-              // Navegar a la pantalla de detalles del producto
-              Navigator.pushNamed(
+              Navigator.push(
                 context,
-                '/details',
-                arguments: availableProducts[index],
+                MaterialPageRoute(
+                  builder: (context) =>
+                      DetailsScreen(product: availableProducts[index]),
+                ),
               );
             },
           );

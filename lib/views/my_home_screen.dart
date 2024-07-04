@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/views/list_products_screen.dart';
+import 'cart_screen.dart';
+import 'list_products_screen.dart';
 
 class MyHomeScreen extends StatelessWidget {
   @override
@@ -15,6 +16,17 @@ class MyHomeScreen extends StatelessWidget {
             ),
           ),
         ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => CartScreen()),
+              );
+            },
+          ),
+        ],
       ),
       body: Column(
         children: <Widget>[
