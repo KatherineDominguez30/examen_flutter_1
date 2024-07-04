@@ -15,11 +15,11 @@ Productos y Detalles del Producto.
 
 ![Vista](images/primera_vista.png)
 
-![Vista](images/segunda_vista.png)
+![Vista](images/Segunda_vista.png)
 
 ![Vista](images/tercera_vista.png)
 
-![Vista](assets/images/cuarta.png)
+![Vista](images/cuarta.png)
 
 ![Vista](images/quinta.png)
 
