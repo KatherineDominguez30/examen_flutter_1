@@ -99,7 +99,7 @@ class _ListProductsScreenState extends State<ListProductsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Listado de Productos de Limpieza'),
+        title: Text('Listado de Productos'),
         actions: [
           BlocBuilder<CartCubit, CartState>(
             builder: (context, state) {

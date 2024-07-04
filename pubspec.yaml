@@ -60,6 +60,15 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
+  images:
+    - images/primera_vista.png
+    - images/segunda_vista.png
+    - images/tercera_vista.png
+    - images/cuarta.png
+    - images/quinta.png
+    - images/sexta.png
+    - images/septima.png
+
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
