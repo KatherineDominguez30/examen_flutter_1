@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../cubit/cart_cubit.dart';
 import 'cart_screen.dart';
 import 'list_products_screen.dart';
 
@@ -17,13 +19,24 @@ class MyHomeScreen extends StatelessWidget {
           ),
         ),
         actions: [
-          IconButton(
-            icon: Icon(Icons.shopping_cart),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => CartScreen()),
-              );
+          BlocBuilder<CartCubit, CartState>(
+            builder: (context, state) {
+              if (state.cartItems.isNotEmpty) {
+                return IconButton(
+                  icon: Icon(Icons.shopping_cart),
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return Dialog(
+                          child: CartScreen(),
+                        );
+                      },
+                    );
+                  },
+                );
+              }
+              return Container();
             },
           ),
         ],

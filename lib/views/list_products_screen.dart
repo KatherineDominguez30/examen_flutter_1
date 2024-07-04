@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../cubit/cart_cubit.dart';
@@ -100,7 +99,7 @@ class _ListProductsScreenState extends State<ListProductsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Listado de Productos'),
+        title: Text('Listado de Productos de Limpieza'),
         actions: [
           BlocBuilder<CartCubit, CartState>(
             builder: (context, state) {
@@ -118,9 +117,8 @@ class _ListProductsScreenState extends State<ListProductsScreen> {
                     );
                   },
                 );
-              } else {
-                return Container();
               }
+              return Container();
             },
           ),
         ],
