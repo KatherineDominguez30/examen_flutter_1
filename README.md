@@ -13,13 +13,13 @@ Productos y Detalles del Producto.
 
 ## Capturas de Pantalla
 
-### Primera Vista
+
 !(images/primera_vista.png)
 
-### Segunda Vista
+
 ![Segunda Vista](images/segunda_vista.png)
 
-### Tercera Vista
+
 ![Tercera Vista](images/tercera_vista.png)
 
 ### Cuarta Vista
